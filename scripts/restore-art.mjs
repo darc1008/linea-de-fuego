@@ -64,6 +64,16 @@ for (const target of [...groups.keys()].sort()) {
     b64 += (await readFile(part.abs, "utf8")).replace(/\s+/g, "");
   }
   const bytes = Buffer.from(b64, "base64");
-  await writeFile(join(root, target), bytes);
+  const dest = join(root, target);
+  try {
+    const existing = await readFile(dest);
+    if (existing.length > bytes.length * 2 && existing.length > 20000) {
+      console.log(`kept ${target} (${existing.length} bytes; source was smaller)`);
+      continue;
+    }
+  } catch {
+    /* no existing file */
+  }
+  await writeFile(dest, bytes);
   console.log(`restored ${target} (${bytes.length} bytes)`);
 }

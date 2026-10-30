@@ -6,11 +6,10 @@ Shooter lateral para móvil. Eliges personaje, arma y misión, y avanzas por sei
 
 ```bash
 npm install
-node scripts/restore-art.mjs
 npm run dev
 ```
 
-`restore-art.mjs` reconstruye los dibujos a partir de los archivos `.b64`. Sin ese paso el juego igual corre, con figuras de reserva.
+Los dibujos ya están en `public/game/`. Si en algún momento solo tienes archivos `.b64`, `node scripts/restore-art.mjs` los reconstruye y no pisa un dibujo que ya sea más grande.
 
 Abre el puerto 8080. En el móvil, un toque en el arma deja el disparo fijo para saltar sin soltar el gatillo.
 
