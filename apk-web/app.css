@@ -1,0 +1,32 @@
+@import "../src/styles.css";
+@import "./fonts/fonts.css";
+@source "../src";
+
+html,
+body,
+#root {
+  height: 100%;
+  background: #0c100e;
+}
+
+body {
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* 100dvh is missing on older Android WebViews; keep 100vh when dvh is invalid. */
+.h-dvh {
+  height: 100vh !important;
+  height: 100dvh !important;
+}
+
+.min-h-dvh {
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+}
+
+.max-h-dvh {
+  max-height: 100vh !important;
+  max-height: 100dvh !important;
+}

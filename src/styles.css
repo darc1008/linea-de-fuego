@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@theme {
+  --color-base: #0c100e;
+  --color-base-2: #141a16;
+  --color-surface: #1b2420;
+  --color-surface-2: #24302a;
+  --color-fg: #f4f0e6;
+  --color-muted: #a3aea4;
+  --color-primary: #e23b2b;
+  --color-accent: #e6b15a;
+  --color-line: #314038;
+  --color-good: #8fd0a8;
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-display: "Teko", system-ui, sans-serif;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    background: var(--color-base);
+    color: var(--color-fg);
+  }
+
+  body {
+    overflow: hidden;
+    font-family: var(--font-sans);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+.key-hint {
+  display: none;
+}
+
+@media (hover: hover) and (min-width: 901px) {
+  .key-hint {
+    display: block;
+  }
+}
+
+.touch-layer {
+  display: none;
+}
+
+@media (pointer: coarse), (max-width: 900px) {
+  .touch-layer {
+    display: block;
+  }
+
+  .hud-pause {
+    display: none;
+  }
+}
+
+.touch-layer button,
+.stick {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ctrl {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.82);
+  background: rgba(6, 10, 14, 0.4);
+  color: #fff;
+  pointer-events: auto;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+}
+
+.ctrl.held,
+.ctrl.locked {
+  background: rgba(226, 59, 43, 0.72);
+  box-shadow: 0 0 0 7px rgba(226, 59, 43, 0.35);
+}
+
+.fire-lock {
+  position: absolute;
+  top: -4px;
+  right: -2px;
+  border-radius: 999px;
+  background: #e23b2b;
+  padding: 1px 5px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 14px;
+}
+
+.ctrl.dim {
+  opacity: 0.38;
+}
+
+.ctrl.editing {
+  outline: 2px dashed #e6b15a;
+  outline-offset: 4px;
+}
+
+.stick {
+  position: absolute;
+  z-index: 2;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.78);
+  background: rgba(6, 10, 14, 0.34);
+  pointer-events: auto;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+}
+
+.stick.editing {
+  outline: 2px dashed #e6b15a;
+  outline-offset: 4px;
+}
+
+.stick-arrow {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.stick-arrow.on {
+  color: #fff;
+}
+
+.grenade-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #e23b2b;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+}
+
+@media (orientation: landscape) and (max-height: 560px) {
+  .hub-picks {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ctrl,
+  .stick,
+  .ui-move {
+    transition: none;
+  }
+}
