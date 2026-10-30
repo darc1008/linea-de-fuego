@@ -115,3 +115,4 @@ export function traitOf(character: ReturnType<typeof characterById>) {
   if (character.armor < 1) return "Aguanta más";
   return "Equilibrado";
 }
+
