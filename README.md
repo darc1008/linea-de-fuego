@@ -1,16 +1,16 @@
 # Línea de Fuego
 
-Shooter lateral estilo Contra para móvil. Eliges personaje, arma y misión, y avanzas por seis países.
+Shooter lateral para móvil. Eliges personaje, arma y misión, y avanzas por seis países.
 
 ## Jugar en el navegador
-
-After clone, run `node scripts/restore-art.mjs` before `npm run dev` so the sprites exist.
 
 ```bash
 npm install
 node scripts/restore-art.mjs
 npm run dev
 ```
+
+`restore-art.mjs` reconstruye los dibujos a partir de los archivos `.b64`. Sin ese paso el juego igual corre, con figuras de reserva.
 
 Abre el puerto 8080. En el móvil, un toque en el arma deja el disparo fijo para saltar sin soltar el gatillo.
 
@@ -22,4 +22,4 @@ Abre el puerto 8080. En el móvil, un toque en el arma deja el disparo fijo para
 
 ## Android
 
-El proyecto está en `android/`. No se incluye la clave de firma. Para generar el APK hace falta un keystore propio y el SDK de Android. Las contraseñas de firma se leen de las variables `LINEA_STORE_PASSWORD` y `LINEA_KEY_PASSWORD`.
+El proyecto está en `android/`. No se incluye la clave de firma. Para generar el APK hace falta un keystore propio y el SDK de Android. Las contraseñas se leen de `LINEA_STORE_PASSWORD` y `LINEA_KEY_PASSWORD`.
